@@ -518,7 +518,7 @@ def metrics_scenarios(scenarios):
     return pd.concat(mdfs, axis=1)
 
 
-def plot_one_scenario(dfs, axes, title_prefix="", legend=False, title=True):
+def plot_one_scenario(dfs, axes, title_prefix="", legend=True, title=True):
     for i, chart_name in enumerate(CHART_NAMES):
         logger.debug(f"Plotting chart {chart_name}")
         df = dfs[chart_name]
@@ -562,6 +562,7 @@ def plot_scenarios(scenarios, end_time=50):
             ha="center",
             va="baseline",
         )
+        ax.legend(loc = "upper right")
     for ax, chart_name in zip(axes[:, 0], CHART_NAMES):
         ax.annotate(
             chart_name,
